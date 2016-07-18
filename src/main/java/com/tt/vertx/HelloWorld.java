@@ -21,11 +21,11 @@ public class HelloWorld extends AbstractVerticle {
     @Override
     public void start() throws Exception {
         Router router = Router.router(vertx);
-        router.route("/").handler(context -> context.response().putHeader("content-type","text/html").end("hello world"));
-        router.route("/json").handler(context -> {
-            context.response().putHeader("content-type","application/json; charset=utf-8")
-                    .end(Json.encodePrettily(new Entity("hello","world")));
-        });
+        router.route("/").handler(c -> c.response().putHeader("content-type","text/html").end("hello world"));
+        router.route("/json").handler(c ->
+            c.response().putHeader("content-type","application/json; charset=utf-8")
+                    .end(Json.encodePrettily(new Entity("hello","world")))
+        );
         System.out.println("Server Running On 8888");
         vertx.createHttpServer().requestHandler(router::accept).listen(8888);
     }
