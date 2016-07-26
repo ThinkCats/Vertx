@@ -14,7 +14,7 @@ import io.vertx.ext.web.Router
 fun customRouter(v : Vertx) : Router {
     var router = Router.router(v)
     router.route("/hello").handler({c -> c.response().html().end("hello world")})
-    router.route("/json").handler({c -> c.response().json().end(Json.encode(Entity("name","sss")))})
+    router.route("/json").handler({c -> c.response().json().end(Json.encode(Entity("name","sssat")))})
     return router
 }
 
